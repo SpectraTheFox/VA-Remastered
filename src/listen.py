@@ -5,8 +5,7 @@ def takeCommand():
     r = sr.Recognizer()
      
     with sr.Microphone() as source:
-         
-        print("Now listening")
+        
         r.adjust_for_ambient_noise(source)
         r.pause_threshold = 1
         audio = r.listen(source)  

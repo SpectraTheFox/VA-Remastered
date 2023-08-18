@@ -1,33 +1,34 @@
 import voice as voice
 import makevoicelines as lines
-import listen as listen
-from pygame import mixer  # Load the popular external library
+import listen
 import time
-mixer.init()
+import os
+import importlib
 
+
+moduleslist = []
+for (dirpath, dirnames, filenames) in os.walk("src\modules"):
+    moduleslist.extend(filenames)
+    break
+print(moduleslist)
 
 keepgoing = True
 outputnumber = 0
 while keepgoing:
+    print("waiting for wakeup")
     wakeup = listen.takeCommand()
-    print(wakeup)
-    if "prism" in wakeup:
+    print("input: " + wakeup)
+    if "prism" in wakeup or "Prism" in wakeup:
         voice.readlines("what can I do for you sir?", outputnumber)
-        mixer.music.load(f'output{outputnumber}.mp3')
-        mixer.music.play()
-        while mixer.music.get_busy():  # wait for music to finish playing
-            time.sleep(1)
-        mixer.music.stop()
         outputnumber += 1
-        whatinput = listen.takeCommand()
-        print(whatinput)
-        toread = lines.createlines(whatinput)
-        voice.readlines(toread, outputnumber)
-        mixer.music.load(f'output{outputnumber}.mp3')
-        mixer.music.play()
-        while mixer.music.get_busy():  # wait for music to finish playing
-            time.sleep(1)
-        mixer.music.stop()
-        outputnumber += 1
-        keepgoing = False
+        print("waiting for command")
+        promptgiven = listen.takeCommand()
+        print("input: " + promptgiven)
+        for item in moduleslist:
+            module = importlib.import_module(f"modules.{item}")
+            if module.check:
+                print(item)
+                module.execute
+        
+        
         

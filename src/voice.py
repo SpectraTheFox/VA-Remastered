@@ -1,8 +1,8 @@
 import requests
-
-
-
+from pygame import mixer
+import time
 def readlines(toread, outputnum):
+    mixer.init()
 
     with open("elevenlabskey.txt",) as f:
         apikey = f.readline()
@@ -26,7 +26,14 @@ def readlines(toread, outputnum):
     }
 
     response = requests.post(url, json=data, headers=headers)
-    with open(f'output{outputnum}.mp3', 'wb') as f:
+    with open(f'outputs/output{outputnum}.mp3', 'wb') as f:
         for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
             if chunk:
                 f.write(chunk)
+    
+    mixer.music.load(f'outputs/output{outputnum}.mp3')
+    mixer.music.play()
+    while mixer.music.get_busy():  # wait for music to finish playing
+        time.sleep(1)
+    mixer.music.stop()
+

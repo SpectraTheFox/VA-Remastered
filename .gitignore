@@ -1,5 +1,4 @@
-output0.mp3
-output1.mp3
+outputs
 elevenlabskey.txt
 openaikey.txt
-src\__pycache__
+src/testing.py
