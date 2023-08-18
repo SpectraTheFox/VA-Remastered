@@ -10,6 +10,7 @@ keepgoing = True
 outputnumber = 0
 while keepgoing:
     wakeup = listen.takeCommand()
+    print(wakeup)
     if "prism" in wakeup:
         voice.readlines("what can I do for you sir?", outputnumber)
         mixer.music.load(f'output{outputnumber}.mp3')

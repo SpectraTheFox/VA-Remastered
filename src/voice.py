@@ -1,14 +1,19 @@
 import requests
 
 
+
 def readlines(toread, outputnum):
+
+    with open("elevenlabskey.txt",) as f:
+        apikey = f.readline()
+
     CHUNK_SIZE = 1024
     url = "https://api.elevenlabs.io/v1/text-to-speech/QypdUQJPa9WOL0ENpPFn"
 
     headers = {
     "Accept": "audio/mpeg",
     "Content-Type": "application/json",
-    "xi-api-key": "<Api-Key-Here>"
+    "xi-api-key": apikey
     }
 
     data = {
