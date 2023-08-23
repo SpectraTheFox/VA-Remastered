@@ -6,4 +6,4 @@ def check(input):
 
 def execute():
     print("Ending Program")
-    exit
+    exit()

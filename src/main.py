@@ -10,6 +10,7 @@ moduleslist = []
 for (dirpath, dirnames, filenames) in os.walk("src\modules"):
     moduleslist.extend(filenames)
     break
+moduleslist = [x.replace(".py", "") for x in moduleslist]
 print(moduleslist)
 
 keepgoing = True
@@ -26,9 +27,9 @@ while keepgoing:
         print("input: " + promptgiven)
         for item in moduleslist:
             module = importlib.import_module(f"modules.{item}")
-            if module.check:
+            if module.check(promptgiven):
                 print(item)
-                module.execute
+                module.execute()
         
         
         
