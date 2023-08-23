@@ -4,5 +4,5 @@ def check(input):
     else:
         return False
 
-def execute():
+def execute(input):
     pass #PRINT CODE TO EXECUTE HERE

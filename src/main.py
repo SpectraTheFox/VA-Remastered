@@ -1,5 +1,4 @@
 import voice as voice
-import makevoicelines as lines
 import listen
 import time
 import os
@@ -29,7 +28,9 @@ while keepgoing:
             module = importlib.import_module(f"modules.{item}")
             if module.check(promptgiven):
                 print(item)
-                module.execute()
+                toread = module.execute(promptgiven)
+                voice.readlines(toread, outputnumber)
+                outputnumber += 1
         
         
         

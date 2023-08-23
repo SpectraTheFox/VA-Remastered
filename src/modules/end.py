@@ -4,6 +4,6 @@ def check(input):
     else:
         return False
 
-def execute():
+def execute(input):
     print("Ending Program")
     exit()
