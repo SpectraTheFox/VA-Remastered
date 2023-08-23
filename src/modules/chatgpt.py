@@ -1,7 +1,7 @@
 import openai
 
 def check(input):
-    if "what" in input:
+    if "what" in input or "how" in input:
         return True
     else: 
         return False
