@@ -19,7 +19,7 @@ while keepgoing:
     wakeup = listen.takeCommand()
     print("input: " + wakeup)
     if "prism" in wakeup or "Prism" in wakeup:
-        voice.readlines("what can I do for you sir?", outputnumber)
+        voice.readlines("what can I do for you", outputnumber)
         outputnumber += 1
         print("waiting for command")
         promptgiven = listen.takeCommand()
