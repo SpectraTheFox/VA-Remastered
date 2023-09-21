@@ -1,11 +1,14 @@
 import requests
 from pygame import mixer
 import time
+import dotenv
+import os
 def readlines(toread, outputnum):
     mixer.init()
 
-    with open("elevenlabskey.txt",) as f:
-        apikey = f.readline()
+    dotenv.load_dotenv()
+
+    apikey = os.environ['EL_KEY']
 
     CHUNK_SIZE = 1024
     url = "https://api.elevenlabs.io/v1/text-to-speech/QypdUQJPa9WOL0ENpPFn"

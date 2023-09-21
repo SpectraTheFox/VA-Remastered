@@ -1,0 +1,4 @@
+openai==0.27.9
+pygame==2.5.1
+Requests==2.31.0
+SpeechRecognition==3.10.0
