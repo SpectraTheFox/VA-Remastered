@@ -17,14 +17,17 @@ while keepgoing:
     print("waiting for wakeup")
     wakeup = listen.takeCommand()
     print("input: " + wakeup)
+    
     if "prism" in wakeup or "Prism" in wakeup:
         voice.readlines("what can I do for you", outputnumber)
         outputnumber += 1
         print("waiting for command")
         promptgiven = listen.takeCommand()
         print("input: " + promptgiven)
+        
         for item in moduleslist:
             module = importlib.import_module(f"modules.{item}")
+            
             if module.check(promptgiven):
                 print(item)
                 toread = module.execute(promptgiven)

@@ -1,9 +1,9 @@
-
 import requests
 from pygame import mixer
 import time
 import dotenv
 import os
+
 def readlines(toread, outputnum):
     mixer.init()
 
