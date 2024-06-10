@@ -11,19 +11,25 @@ for (dirpath, dirnames, filenames) in os.walk("src\modules"):
 moduleslist = [x.replace(".py", "") for x in moduleslist]
 print(moduleslist)
 
+textorvoice= input("Do You Want Voice or Text Input?\n")
+
+def va_input():
+    if textorvoice == "Voice" or textorvoice == "voice":
+       return listen.takeCommand()
+    elif textorvoice == "Text" or textorvoice == "text": 
+        return input("Input: ")
+
 keepgoing = True
 outputnumber = 0
 while keepgoing:
     print("waiting for wakeup")
-    wakeup = listen.takeCommand()
-    print("input: " + wakeup)
+    wakeup = va_input()
     
     if "prism" in wakeup or "Prism" in wakeup:
         voice.readlines("what can I do for you", outputnumber)
         outputnumber += 1
         print("waiting for command")
-        promptgiven = listen.takeCommand()
-        print("input: " + promptgiven)
+        promptgiven = va_input()
         
         for item in moduleslist:
             module = importlib.import_module(f"modules.{item}")

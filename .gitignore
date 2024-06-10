@@ -1,6 +1,5 @@
 outputs
 elevenlabskey.txt
-openaikey.txt
 src/testing.py
 src/modules/__pycache__
 src/__pycache__
