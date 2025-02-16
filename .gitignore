@@ -6,3 +6,4 @@ src/__pycache__
 .env
 .DS_Store
 src/DS_Store
+src/modules/owo.py
