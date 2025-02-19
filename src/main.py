@@ -2,13 +2,16 @@ import voice as voice
 import listen
 import os
 import importlib
+import random 
 
+introslist = []
 
 moduleslist = []
-for (dirpath, dirnames, filenames) in os.walk("src\modules"):
+for (dirpath, dirnames, filenames) in os.walk("src/modules"):
     moduleslist.extend(filenames)
     break
 moduleslist = [x.replace(".py", "") for x in moduleslist]
+moduleslist.remove(".DS_Store")
 print(moduleslist)
 
 textorvoice= input("Do You Want Voice or Text Input?\n")
@@ -24,9 +27,13 @@ outputnumber = 0
 while keepgoing:
     print("waiting for wakeup")
     wakeup = va_input()
+    with open("src/intros.txt", "r") as intosfile:
+        intros = intosfile.readlines()
+        for lines in intros:
+            introslist.append(lines)
     
     if "prism" in wakeup or "Prism" in wakeup:
-        voice.readlines("what can I do for you", outputnumber)
+        voice.readlines(random.choice(introslist), outputnumber)
         outputnumber += 1
         print("waiting for command")
         promptgiven = va_input()
@@ -38,7 +45,6 @@ while keepgoing:
                 print(item)
                 toread = module.execute(promptgiven)
                 voice.readlines(toread, outputnumber)
-                outputnumber += 1
-        
+                outputnumber += 1 
         
         

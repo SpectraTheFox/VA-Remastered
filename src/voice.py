@@ -12,7 +12,7 @@ def readlines(toread, outputnum):
     apikey = os.environ['EL_KEY']
 
     CHUNK_SIZE = 1024
-    url = "https://api.elevenlabs.io/v1/text-to-speech/QypdUQJPa9WOL0ENpPFn"
+    url = "https://api.elevenlabs.io/v1/text-to-speech/UDGi853nqyoKsQgqpEwJ"
 
     headers = {
     "Accept": "audio/mpeg",
